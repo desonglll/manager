@@ -1,50 +1,3 @@
-<template>
-  <div>
-    <!-- <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-      <el-radio-button :label="false">展开</el-radio-button>
-      <el-radio-button :label="true">收起</el-radio-button>
-    </el-radio-group> -->
-
-    <el-menu
-      default-active="1-4-1"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-      :collapse="isCollapse"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b"
-    >
-      <h3>通用后台管理系统</h3>
-      <el-menu-item
-        v-for="item in noChildren"
-        :key="item.name"
-        v-bind:index="item.name"
-      >
-        <i :class="`el-icon-${item.icon}`"></i>
-        <span slot="title">{{ item.label }}</span>
-      </el-menu-item>
-
-      <el-submenu
-        v-for="item in hasChildren"
-        :key="item.label"
-        :index="item.label"
-      >
-        <template slot="title">
-          <i :class="`el-icon-${item.icon}`"></i>
-          <span slot="title">{{ item.label }}</span>
-        </template>
-        <el-menu-item-group
-          v-for="subItem in item.children"
-          :key="subItem.path"
-        >
-          <el-menu-item :index="subItem.path">{{ subItem.label }}</el-menu-item>
-        </el-menu-item-group>
-      </el-submenu>
-    </el-menu>
-  </div>
-</template>
-
 <script>
 export default {
   data() {
@@ -102,6 +55,11 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     },
+    // 点击菜单
+    clickMenu(item) {
+      console.log(item);
+      this.$router.push(item.path);
+    },
   },
   computed: {
     // 没有子菜单
@@ -115,6 +73,55 @@ export default {
   },
 };
 </script>
+<template>
+  <div>
+    <!-- <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
+      <el-radio-button :label="false">展开</el-radio-button>
+      <el-radio-button :label="true">收起</el-radio-button>
+    </el-radio-group> -->
+
+    <el-menu
+      default-active="1-4-1"
+      class="el-menu-vertical-demo"
+      @open="handleOpen"
+      @close="handleClose"
+      :collapse="isCollapse"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#ffd04b"
+    >
+      <h3>通用后台管理系统</h3>
+      <el-menu-item
+        @click="clickMenu(item)"
+        v-for="item in noChildren"
+        :key="item.name"
+        v-bind:index="item.name"
+      >
+        <i :class="`el-icon-${item.icon}`"></i>
+        <span slot="title">{{ item.label }}</span>
+      </el-menu-item>
+
+      <el-submenu
+        v-for="item in hasChildren"
+        :key="item.label"
+        :index="item.label"
+      >
+        <template slot="title">
+          <i :class="`el-icon-${item.icon}`"></i>
+          <span slot="title">{{ item.label }}</span>
+        </template>
+        <el-menu-item-group
+          v-for="subItem in item.children"
+          :key="subItem.path"
+        >
+          <el-menu-item @click="clickMenu(subItem)" :index="subItem.path">{{
+            subItem.label
+          }}</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+    </el-menu>
+  </div>
+</template>
 
 <style lang="less" scoped>
 .el-menu {
