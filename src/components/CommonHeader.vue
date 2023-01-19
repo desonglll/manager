@@ -13,7 +13,10 @@
     <div class="r-content">
       <el-dropdown>
         <span class="el-dropdown-link">
-          <img class="user" src="../assets/images/admin-logo.jpeg" alt="" />
+          <div>
+            <h2>选项</h2>
+            <!-- <img class="user" src="../assets/images/admin-logo.jpeg" alt="" /> -->
+          </div>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>个人中心</el-dropdown-item>
@@ -52,9 +55,7 @@ export default {
   }
   .r-content {
     .user {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
+      color: #fff;
     }
   }
 }
