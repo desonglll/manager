@@ -1,5 +1,23 @@
 <template>
-  <div>This is Home.vue</div>
+  <el-row>
+    <el-col :span="8">
+      <el-card class="box-card">
+        <div class="user">
+          <img src="../assets/images/admin-logo.jpeg" alt="" />
+          <div class="userinfo">
+            <p class="name">Admin</p>
+            <p class="access">超级管理员</p>
+          </div>
+        </div>
+        <el-divider></el-divider>
+        <div class="login-info">
+          <p>上次登陆的时间：<span>2021-07-19</span></p>
+          <p>上次登陆的地点：<span>武汉</span></p>
+        </div>
+      </el-card>
+    </el-col>
+    <el-col :span="16"><div class="grid-content bg-purple-light"></div></el-col>
+  </el-row>
 </template>
 
 <script>
@@ -10,4 +28,37 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="less">
+.user {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  img {
+    margin-right: 40px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+  .userinfo {
+    .name {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .access {
+      color: #999999;
+    }
+  }
+}
+.login-info {
+  p {
+    line-height: 28px;
+    font-size: 14px;
+    color: #999999;
+    span {
+      color: #666666;
+      margin-left: 60px;
+    }
+  }
+}
+</style>
