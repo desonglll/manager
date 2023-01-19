@@ -2,7 +2,6 @@
 export default {
   data() {
     return {
-      isCollapse: false,
       menuData: [
         {
           path: "/",
@@ -58,7 +57,13 @@ export default {
     // 点击菜单
     clickMenu(item) {
       console.log(item);
-      this.$router.push(item.path);
+      // 当页面的路由与跳转的路由不一致的时候才允许跳转
+      if (
+        this.$route.path !== item.path &&
+        !(this.$route.path === "/home" && item.path === "/")
+      ) {
+        this.$router.push(item.path);
+      }
     },
   },
   computed: {
@@ -69,6 +74,9 @@ export default {
     // 有子菜单
     hasChildren() {
       return this.menuData.filter((item) => item.children);
+    },
+    isCollapse() {
+      return this.$store.state.tab.isCollapse;
     },
   },
 };

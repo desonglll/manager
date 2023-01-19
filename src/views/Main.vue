@@ -1,3 +1,18 @@
+<script>
+import CommonAside from "../components/CommonAside.vue";
+import CommonHeader from "../components/CommonHeader.vue";
+
+export default {
+  data() {
+    return {};
+  },
+  components: {
+    CommonAside,
+    CommonHeader,
+  },
+};
+</script>
+
 <template>
   <div>
     <el-container>
@@ -6,7 +21,10 @@
         <CommonAside />
       </el-aside>
       <el-container>
-        <el-header>Header</el-header>
+        <el-header>
+          <!-- <common-header />  -->
+          <CommonHeader />
+        </el-header>
         <el-main>
           <!-- 路由出口 -->
           <router-view></router-view>
@@ -16,17 +34,8 @@
   </div>
 </template>
 
-<script>
-import CommonAside from "../components/CommonAside.vue";
-
-export default {
-  data() {
-    return {};
-  },
-  components: {
-    CommonAside,
-  },
-};
-</script>
-
-<style lang="scss"></style>
+<style lang="less">
+.el-header {
+  padding: 0;
+}
+</style>
