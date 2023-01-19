@@ -81,6 +81,7 @@ export default {
   },
 };
 </script>
+
 <template>
   <div>
     <!-- <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
@@ -98,7 +99,7 @@ export default {
       text-color="#fff"
       active-text-color="#ffd04b"
     >
-      <h3>通用后台管理系统</h3>
+      <h3>{{ isCollapse ? "后台" : "通用后台管理系统" }}</h3>
       <el-menu-item
         @click="clickMenu(item)"
         v-for="item in noChildren"
@@ -141,6 +142,7 @@ export default {
     font-size: 16px;
     font-weight: 400px;
   }
+  border-right: none;
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;

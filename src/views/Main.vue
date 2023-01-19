@@ -16,7 +16,7 @@ export default {
 <template>
   <div>
     <el-container>
-      <el-aside width="200px">
+      <el-aside width="auto">
         <!-- <common-aside /> -->
         <CommonAside />
       </el-aside>
