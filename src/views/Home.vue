@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <el-col :span="8">
+    <el-col :span="8" style="padding-right: 10px">
       <el-card class="box-card">
         <div class="user">
           <img src="../assets/images/admin-logo.jpeg" alt="" />
@@ -37,7 +37,7 @@
         </el-table>
       </el-card>
     </el-col>
-    <el-col :span="16">
+    <el-col :span="16" style="padding-left: 10px">
       <div class="num">
         <el-card
           v-for="item in countData"
@@ -56,52 +56,25 @@
           </div>
         </el-card>
       </div>
+
+      <el-card style="height: 280px">
+        <!-- 折线图 -->
+      </el-card>
+      <div class="graph">
+        <el-card style="height: 260px"></el-card>
+        <el-card style="height: 260px"></el-card>
+      </div>
     </el-col>
   </el-row>
 </template>
 
 <script>
+import { getData } from "../api";
+import * as echarts from "echarts";
 export default {
   data() {
     return {
-      tableData: [
-        {
-          name: "Smartistan",
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800,
-        },
-        {
-          name: "Reno",
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800,
-        },
-        {
-          name: "Apple",
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800,
-        },
-        {
-          name: "Xiaomi",
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800,
-        },
-        {
-          name: "Huawei",
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800,
-        },
-        {
-          name: "Meizu",
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800,
-        },
-      ],
+      tableData: [],
       // 要是对象
       tableLabel: {
         name: "型号",
@@ -149,6 +122,15 @@ export default {
         },
       ],
     };
+  },
+  mounted() {
+    getData().then(({ data }) => {
+      // 解构
+      const { tableData } = data.data;
+      console.log(tableData);
+      // 动态数据
+      this.tableData = tableData;
+    });
   },
 };
 </script>
@@ -224,6 +206,14 @@ export default {
   .el-card {
     width: 33%;
     margin-bottom: 20px;
+  }
+}
+.graph {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  .el-card {
+    width: 48%;
   }
 }
 </style>
