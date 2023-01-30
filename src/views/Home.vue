@@ -37,7 +37,26 @@
         </el-table>
       </el-card>
     </el-col>
-    <el-col :span="16"><div class="grid-content bg-purple-light"></div></el-col>
+    <el-col :span="16">
+      <div class="num">
+        <el-card
+          v-for="item in countData"
+          :key="item.name"
+          :body-style="{ display: 'flex', padding: 0 }"
+        >
+          <!-- 模板字符串 -->
+          <i
+            class="icon"
+            :class="`el-icon-${item.icon}`"
+            :style="{ background: item.color }"
+          ></i>
+          <div class="detail">
+            <p class="price">¥ {{ item.value }}</p>
+            <p class="desc">{{ item.name }}</p>
+          </div>
+        </el-card>
+      </div>
+    </el-col>
   </el-row>
 </template>
 
@@ -47,13 +66,13 @@ export default {
     return {
       tableData: [
         {
-          name: "oppo",
+          name: "Smartistan",
           todayBuy: 100,
           monthBuy: 300,
           totalBuy: 800,
         },
         {
-          name: "vivo",
+          name: "Reno",
           todayBuy: 100,
           monthBuy: 300,
           totalBuy: 800,
@@ -90,6 +109,45 @@ export default {
         monthBuy: "本月购买",
         totalBuy: "总购买",
       },
+      // 订单数据
+      countData: [
+        {
+          name: "今日支付订单",
+          value: 1234,
+          icon: "success",
+          color: "#2ec7c9",
+        },
+        {
+          name: "今日收藏订单",
+          value: 210,
+          icon: "star-on",
+          color: "#ffb980",
+        },
+        {
+          name: "今日未支付订单",
+          value: 1234,
+          icon: "s-goods",
+          color: "#5ab1ef",
+        },
+        {
+          name: "本月支付订单",
+          value: 1234,
+          icon: "success",
+          color: "#2ec7c9",
+        },
+        {
+          name: "本月收藏订单",
+          value: 210,
+          icon: "star-on",
+          color: "#ffb980",
+        },
+        {
+          name: "本月未支付订单",
+          value: 1234,
+          icon: "s-goods",
+          color: "#5ab1ef",
+        },
+      ],
     };
   },
 };
@@ -101,31 +159,71 @@ export default {
   margin-bottom: 20px;
   display: flex;
   align-items: center;
+
   img {
     margin-right: 5vh;
     width: 10vh;
     height: 10vh;
     border-radius: 50%;
   }
+
   .userinfo {
     .name {
       font-size: 32px;
       margin-bottom: 10px;
     }
+
     .access {
       color: #999999;
     }
   }
 }
+
 .login-info {
   p {
     line-height: 28px;
     font-size: 14px;
     color: #999999;
+
     span {
       color: #666666;
       margin-left: 60px;
     }
+  }
+}
+
+.num {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .icon {
+    width: 80px;
+    height: 80px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 80px;
+    color: white;
+  }
+  .detail {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .price {
+      font-size: 30px;
+      margin-bottom: 14px;
+      line-height: 30px;
+      height: 30px;
+    }
+    .desc {
+      font-size: 14px;
+      text-align: center;
+      color: #999999;
+    }
+  }
+  .el-card {
+    width: 33%;
+    margin-bottom: 20px;
   }
 }
 </style>

@@ -1,7 +1,23 @@
 <template>
-  <div>This is Mall</div>
+  <div>
+    <div>Hello Mall</div>
+    <el-button @click="clickConsole()"></el-button>
+  </div>
 </template>
 
-<script setup></script>
+<script>
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    clickConsole() {
+      console.log("Hello World!");
+    },
+  },
+};
+</script>
 
-<style lang="scss"></style>
+<style lang="scss">
+
+</style>
