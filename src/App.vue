@@ -24,4 +24,6 @@ export default {
 
 <style lang="less">
 @import url("./assets/css/reset.css");
+#app {
+}
 </style>

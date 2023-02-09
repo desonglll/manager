@@ -8,7 +8,6 @@
 
 <script>
 import { Bar } from "@antv/g2plot";
-import { getData } from "../api";
 
 export default {
   data() {
